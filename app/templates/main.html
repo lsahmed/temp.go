@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TempMail</title>
+    <link rel="stylesheet" href="{% static "style.css" %}">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-content">
+                <h1 class="title">TempMail</h1>
+                <div class="email-section">
+                    <input type="text" id="email" value="{{ email }}" readonly class="email-input">
+                    <div class="button-group">
+                        <button id="copy-button" class="btn btn-outline">Copy</button>
+                        <button class="btn btn-primary">Change</button>
+                    </div>
+                </div>
+                <div class="inbox">
+                    <h2 class="inbox-title">Inbox</h2>
+                    <div class="email-item">
+                        <p class="email-sender">John Doe</p>
+                        <p class="email-subject">Meeting Tomorrow</p>
+                        <p class="email-preview">Hi, I wanted to confirm our meeting...</p>
+                    </div>
+                    <div class="email-item">
+                        <p class="email-sender">Amazon</p>
+                        <p class="email-subject">Your Order Has Shipped</p>
+                        <p class="email-preview">Your package with order number...</p>
+                    </div>
+                    <div class="email-item">
+                        <p class="email-sender">LinkedIn</p>
+                        <p class="email-subject">New connection request</p>
+                        <p class="email-preview">You have a new connection request...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Copy button functionality
+        document.getElementById('copy-button').addEventListener('click', function() {
+            // Get the email input element
+            const emailInput = document.getElementById('email');
+
+            // Select the text in the input element
+            emailInput.select();
+            emailInput.setSelectionRange(0, 99999); // For mobile devices
+
+            // Copy the selected text to the clipboard
+            document.execCommand('copy');
+
+            // Notify the user
+            alert('Email copied to clipboard!');
+        });
+    </script>
+</body>
+</html>
